@@ -33,18 +33,25 @@
             Izgubili ste. Zavrtite ponovno, možda bude sreće.</div>
           @endif
           @endisset
-          <form method="POST" style="text-align: center" action="{{ url()->current() }}">
-            @csrf
-            <!-- Input za unos -->
-            <label for="ulog"> Unesite ulog: </label>
-            <input id="ulog" type="number" name="ulog" required />
-            <!-- Submit button -->
-            <button style="margin-left:30px;border: 1px solid black; background-color: powderblue;
+
+          @if($brojTokena<10) <p style="text-align: center">Trenutno posjedujete {{$brojTokena}} tokena! <a
+              href="{{route('dashboard.osvijeziTokene')}}"><button>Obnovi tokene</button></a></p>
+            @else
+            <p style="text-align: center">Trenutno posjedujete {{$brojTokena}} tokena!</p>
+            @endif
+
+            <form method="POST" style="text-align: center" action="{{ url()->current() }}">
+              @csrf
+              <!-- Input za unos -->
+              <label for="ulog"> Unesite ulog: </label>
+              <input id="ulog" type="number" name="ulog" required />
+              <!-- Submit button -->
+              <button style="margin-left:30px;border: 1px solid black; background-color: powderblue;
             border-radius: 10px;
             padding: 10px;">
-              Zavrti
-            </button>
-          </form>
+                Zavrti
+              </button>
+            </form>
         </div>
       </div>
     </div>
