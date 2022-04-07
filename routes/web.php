@@ -25,9 +25,18 @@ Route::get('/dashboard', function () {
     return view('dashboard')->with(['naslov' => 'Dashboard']);
 })->middleware(['auth'])->name('dashboard');
 
+
+
 Route::get('/dashboard/igra1', function () {
     return view('igra1')->with(['naslov' => 'Igra tri boje', 'brojTokena' => Auth::user()->coins]);
 })->middleware(['auth'])->name('igraTriBoje.index');
+
+Route::post('/dashboard/igra1', [Igra1::class, 'store'])->middleware(['auth'])->name('igraTriBoje.store');
+
+Route::get('/dashboard/igra1/statistika', [Igra1::class, 'statistics'])->middleware(['auth'])->name('igraTriBoje.statistika');
+
+
+
 
 Route::get('/dashboard/osvijeziTokene', function () {
     //stavljam tokene na 500
@@ -40,9 +49,5 @@ Route::get('/dashboard/osvijeziTokene', function () {
 
 Route::get('dashboard/profile', [ProfileController::class, 'index'])->middleware(['auth'])->name('profile');
 Route::post('dashboard/profile', [ProfileController::class, 'store'])->middleware(['auth']);
-
-
-
-Route::post('/dashboard/igra1', [Igra1::class, 'store'])->middleware(['auth'])->name('igraTriBoje.store');
 
 require __DIR__ . '/auth.php';

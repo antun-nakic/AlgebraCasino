@@ -35,7 +35,7 @@
                                     src="{{asset(Auth::user()->avatar_url)}}">
                                 @else
                                 <img style="width:25px;height:25px;border-radius:25px"
-                                    src="{{asset('storage/defaultnaSlikaProfila.png')}}">
+                                    src="{{asset('storage/avatars/defaultnaSlikaProfila.png')}}">
                                 @endif
                             </div>
                         </button>
