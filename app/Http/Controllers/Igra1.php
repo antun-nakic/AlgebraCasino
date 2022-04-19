@@ -43,7 +43,7 @@ class Igra1 extends Controller
         //oduzmi coinse ili dodaj u bazi podataka od korisnika
 
 
-        return view('igra1.index')->with(['naslov' => 'Igra tri boje', 'boje' => $odabraneBoje, 'pobjeda' => $pobjeda, 'brojTokena' => $mojKorisnik->coins]);
+        return view('Igra1.index')->with(['naslov' => 'Igra tri boje', 'boje' => $odabraneBoje, 'pobjeda' => $pobjeda, 'brojTokena' => $mojKorisnik->coins]);
     }
 
     public function statistics()
@@ -63,6 +63,6 @@ class Igra1 extends Controller
         AllGames::find(1)->pripada_korisniku->first()['name'];
         $sortG = Game::find(1)->statistika_igre->where('dobitak', '<', 0)->sortBy('dobitak')
             ->pluck('idKorisnika', 'dobitak')->slice(0, 5)->all();
-        return view('igra1.statistika')->with(['naslov' => 'Igra tri boje', 'sortD' => $sortD, 'sortG' => $sortG]);
+        return view('Igra1.statistika')->with(['naslov' => 'Igra tri boje', 'sortD' => $sortD, 'sortG' => $sortG]);
     }
 }
