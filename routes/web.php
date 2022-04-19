@@ -28,7 +28,7 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/dashboard/igra1', function () {
-    return view('igra1')->with(['naslov' => 'Igra tri boje', 'brojTokena' => Auth::user()->coins]);
+    return view('igra1.index')->with(['naslov' => 'Igra tri boje', 'brojTokena' => Auth::user()->coins]);
 })->middleware(['auth'])->name('igraTriBoje.index');
 
 Route::post('/dashboard/igra1', [Igra1::class, 'store'])->middleware(['auth'])->name('igraTriBoje.store');
